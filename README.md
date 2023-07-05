@@ -13,6 +13,8 @@ JavaScript to create the logic
 CSS to create the array of card objects and to render in the browser.
 
 ## Wireframes
+[War wireframe](<../../../Downloads/Layout for War.pdf>)
+
 
 ## MVP Goals
 *Render a game board with a minimum of 2 players.
@@ -28,7 +30,7 @@ CSS to create the array of card objects and to render in the browser.
 *Have the ability for multiple computer opponents.
 *Allow the use of a 3 card deck of high rank cards that is distributed between players with one random small card.
 *Allow a line-up style play where instead of choosing from deck cards are lined up face down and player is allowed to choose.
-
+*ability to change deck back
 ## Potential Roadblocks
 
 *Getting the design to be fluid enough that the changes in game play will  not affect the experience of the user.
