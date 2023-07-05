@@ -13,7 +13,7 @@ JavaScript to create the logic
 CSS to create the array of card objects and to render in the browser.
 
 ## Wireframes
-[War wireframe](<../../../Downloads/Layout for War.pdf>)
+![War wireframe](/Users/deandreminor/code/projects/project-1/Layout for War.png)
 
 
 ## MVP Goals
