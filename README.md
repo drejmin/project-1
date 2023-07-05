@@ -13,7 +13,7 @@ JavaScript to create the logic
 CSS to create the array of card objects and to render in the browser.
 
 ## Wireframes
-![image](https://imgur.com/a/PZnu1nc)
+<a href="https://imgur.com/UagIBwk"><img src="https://i.imgur.com/UagIBwk.png" title="source: imgur.com" /></a>)
 
 
 ## MVP Goals
