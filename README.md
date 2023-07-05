@@ -11,10 +11,11 @@ If you get tired of playing the standard game, you may spice it up a bit since t
 This game is fun when playing with friends and has no requirements for anyone to start playing.
 
 ## Tech Stacks
-
+<ul>
 <li>The game will use HTML to hold the game.
 <li>JavaScript to create the logic
 <li>CSS to create the array of card objects and to render in the browser.
+</ul>
 
 ## Wireframes
 
@@ -32,17 +33,20 @@ This game is fun when playing with friends and has no requirements for anyone to
 </ul>
 
 ## Stretch Goals
-
+<ul>
 <li>Allow the use of rule changes before the game to set up.
 <li>Have the ability for multiple computer opponents.
 <li>Allow the use of a 3 card deck of high rank cards that is distributed between players with one random small card.
 <li>Allow a line-up style play where instead of choosing from deck cards are lined up face down and player is allowed to choose.
 <li>ability to change deck back
+</ul>
 
 ## Potential Roadblocks
 
+<ul>
 <li>Getting the design to be fluid enough that the changes in game play will not affect the experience of the user.
 
 <li>Letting checkboxes to create changes in the code so that the game plays differently
 
 <li>Creating an ability for multiple computers to work from multiple randomized decks
+</ul>
