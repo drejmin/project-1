@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="css/card-library/css/cardstarter.css" rel="stylesheet" type="text/css" />
-    <link href="war.cs" rel="stylesheet" type="text/css"/>
+    <link href="war.css" rel="stylesheet" type="text/css"/>
     <script src = "War.js"></script>
 </head>
 <body>
@@ -13,5 +13,45 @@
     <h1>I De-Clare War!!</h1>
     <h3> I declare war is a staple card game that is enjoyed by many. The goal is to take all of your opponents' cards and collect the full deck back. Points can also be gained and it can be played based on rounds instead for a quicker version of the game.</h3>
     </header>
+
+    <!-- Allows players to select the style of play that they would like. -->
+    <article>
+        <h4>Select your ruleset</h4>
+    <ul>
+    <li><input type = "checkbox" id = "Grid" >
+    <label for="Grid">Pick the cards you play instead of just the one on the top deck</label></li>
+    <li><input type = "checkbox" id = "Jokers" >
+    <label for="Jokers">Play with jokers in the deck that beat every other card</label></li>
+    <li><input type = "checkbox" id = "Twos" >
+    <label for="Twos">Once the lowest card it rises to take out the aces but still falls to everything else</label></li>
+    </ul>
+    </article>
+
+<!-- Player chooses how many computers to play against -->
+    <hgroup>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Players</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a>2</a>
+          <a>3</a>
+          <a>4</a>
+        </div>
+      </div>
+    </hgroup>
+    <!-- Player chooses how many rounds -->
+    <hgroup>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Rounds</button>
+        <div id="myDropdown" class="dropdown-content">
+          <a>10</a>
+          <a>15</a>
+          <a>20</a>
+          <a>25</a>
+        </div>
+      </div>
+    </hgroup>
+
+    <button>Start Game!</button>
+    
 </body>
 </html>
