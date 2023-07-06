@@ -8,17 +8,20 @@ body {
   font-family: sans-serif;
   justify-content: center;
   display: inline-table;
+  padding: auto;
 }
 
 h1{
   display: center;
   align-content: center;
   justify-content: center;
-  padding: 0vh 0vh 0vh 20vh;
+  padding:auto;
 }
 h2{
   font-display: center;
   align-content: center;
+  margin: auto;
+  padding: auto;
 }
 
 .card-container {
