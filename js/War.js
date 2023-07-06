@@ -14,9 +14,10 @@ const shuffledContainer = document.getElementById('shuffled-deck-container');
 
 /*----- event listeners -----*/
 document.querySelector('button').addEventListener('click', renderNewShuffledDeck);
-
+document.getElementById('start').addEventListener('click',renderboard());
 /*----- functions -----*/
 
+renderboard();
 
 function getNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
