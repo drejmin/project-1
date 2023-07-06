@@ -30,28 +30,32 @@
 <!-- Player chooses how many computers to play against -->
     <hgroup>
         <h4>Select your players</h4>
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Players</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a>2</a>
-          <a>3</a>
-          <a>4</a>
-        </div>
-      </div>
+            <label for="players">Number of Players:</label>
+
+              <input type= "radio" id="players" value="2">
+              <label for="1">2</label>
+              <input type= "radio" id="players" value="3">
+              <label for="1">3</label>
+              <input type= "radio" id="players" value="4">
+              <label for="1">4</label>
+            <br><br>
     </hgroup>
     <!-- Player chooses how many rounds -->
     <hgroup>
-        <h4>How many rounds?</h4>
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Rounds</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a>10</a>
-          <a>15</a>
-          <a>20</a>
-          <a>25</a>
-        </div>
-      </div>
-    </hgroup>
+        <h4>How many rounds</h4>
+        <label for="rounds">Number of Rounds:</label>
+
+        <input type= "radio" id="rounds" value="10">
+        <label for="10">10</label>
+        <input type= "radio" id="rounds" value="15">
+        <label for="15">15</label>
+        <input type= "radio" id="rounds" value="20">
+        <label for="20">20</label>
+        <input type= "radio" id="rounds" value="25">
+        <label for="25">25</label>
+        <input type= "radio" id="rounds" value="30">
+        <label for="30">30</label>
+      <br><br>
 
     <button>Start Game!</button>
     
