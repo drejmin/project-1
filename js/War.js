@@ -1,23 +1,49 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+const player1 = 'green';
+const player2 = 'blue';
+const player3 = 'yellow';
+const player4 = 'red';
+
 
 // Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
 renderDeckInContainer(originalDeck, document.getElementById('original-deck-container'));
+const jokerDeck = buildJokerDeck();
+renderJokerDeckInContainer(jokerDeck, document.getElementById('joker-deck-container'))
 
 /*----- app's state (variables) -----*/
 let shuffledDeck;
 
 /*----- cached element references -----*/
 const shuffledContainer = document.getElementById('shuffled-deck-container');
-
+const jokerContainer = document.getElementById('joker-deck-container');
 /*----- event listeners -----*/
 document.querySelector('button').addEventListener('click', renderNewShuffledDeck);
-document.getElementById('start').addEventListener('click',renderboard());
+document.getElementById('start').addEventListener('click',renderboard);
+document.querySelectorAll('checkbox').addEventListener('selected',rules);
+document.querySelectorAll('rounds').addEventListener('selected',playRounds);
+document.querySelectorAll('players').addEventListener('selected', numPlayers);
 /*----- functions -----*/
 
 renderboard();
+
+// function renderboard(){
+
+// }
+
+// function rule(){
+
+// }
+
+// function playRounds(){
+
+// }
+
+// function numPlayers(){
+
+// }
 
 function getNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
@@ -51,6 +77,19 @@ function renderDeckInContainer(deck, container) {
   // }, '');
   container.innerHTML = cardsHtml;
 }
+function renderJokerDeckInContainer(deck, container) {
+  container.innerHTML = '';
+  // Let's build the cards as a string of HTML
+  let cardsHtml = '';
+  deck.forEach(function(card) {
+    cardsHtml += `<div class="card ${card.face}"></div>`;
+  });
+  // Or, use reduce to 'reduce' the array into a single thing - in this case a string of HTML markup 
+  // const cardsHtml = deck.reduce(function(html, card) {
+  //   return html + `<div class="card ${card.face}"></div>`;
+  // }, '');
+  container.innerHTML = cardsHtml;
+} 
 
 function buildOriginalDeck() {
   const deck = [];
@@ -66,6 +105,43 @@ function buildOriginalDeck() {
     });
   });
   return deck;
+}
+function buildJokerDeck() {
+  const deck = [];
+  // Use nested forEach to generate card objects
+  suits.forEach(function(suit) {
+    ranks.forEach(function(rank) {
+      deck.push({
+        // The 'face' property maps to the library's CSS classes for cards
+        face: `${suit}${rank}`,
+        // Setting the 'value' property for game of blackjack, not war
+        value: Number(rank) || (rank === 'A' ? 11 : 10)
+      });
+    });
+  });
+  return deck;
+}
+
+function deal(deck, numPlayers){
+  deck.forEach(numPlayers => {
+    
+    for (currentDeck.length){
+
+        if (numPlayers === 3){
+            const playerDeck1 = deck.pop();
+
+            //System.out.println(player1.playCards[count/12].rank+"   "+player1.playCards[count/12].suit);
+        }
+        else if (numPlayers === 4){
+            
+        }
+        else {
+            
+        }
+            
+        } 
+        
+    }
 }
 
 renderNewShuffledDeck();
