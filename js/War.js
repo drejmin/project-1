@@ -10,52 +10,60 @@ const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', '
 
 // Build an 'original' deck of 'card' objects used to create shuffled decks
 const originalDeck = buildOriginalDeck();
-renderDeckInContainer(originalDeck, document.getElementById('original-deck-container'));
+//renderDeckInContainer(originalDeck, document.getElementById('original-deck-container'));
 
-const jokerDeck = buildJokerDeck();
-renderJokerDeckInContainer(jokerDeck, document.getElementById('joker-deck-container'))
+//const shuffledContainer = renderNewShuffledDeck();
+//renderDeckInContainer(shuffledDeck, document.getElementById('shuffled-deck-container'))
+
+//const jokerDeck = buildJokerDeck();
+//renderJokerDeckInContainer(jokerDeck, document.getElementById('joker-deck-container'))
 
 /*----- app's state (variables) -----*/
 let shuffledDeck = [];
-const playing = false;
-
+let playing = false;
+let newShuffledDeck = [];
 let warArray = []
+let playerHand = [];
+let compHand = [];
  
 
-let playDeck = '', computerDeck = '', playerCard = '', compCard = '';
+let playerCard = '', compCard = '';
 
 /*----- cached element references -----*/
 
-const shuffledContainer = document.getElementById('shuffled-deck-container');
-const jokerContainer = document.getElementById('joker-deck-container');
+
+//const jokerContainer = document.getElementById('joker-deck-container');
 
 
 /*----- event listeners -----*/
 //document.querySelector('button').addEventListener('click', renderNewShuffledDeck);
-
-document.querySelectorAll('checkbox').addEventListener('selected',rules);
-document.querySelectorAll('rounds').addEventListener('selected',playRounds);
-document.querySelectorAll('players').addEventListener('selected', numPlayers);
+// document.querySelectorAll('checkbox').addEventListener('selected',rules);
+// document.querySelectorAll('rounds').addEventListener('selected',playRounds);
+// document.querySelectorAll('players').addEventListener('selected', numPlayers);
 
 
 /*----- functions -----*/
 
-buildOriginalDeck();
-renderNewShuffledDeck();
-shuffledContainer();
-buildJokerDeck();
+//buildJokerDeck();
 
 
-function splitCards(newShuffledDeck) {
-  let playerHand = [];
-  let compHand = [];
+function splitCards() {
+  const tempDeck = [...shuffledDeck]
+  buildOriginalDeck();
   getNewShuffledDeck();
   
-	for (let i=0; i != 52; i+=2) {
-		playerHand.push(newShuffledDeck [i]);
-		compHand.push(newShuffledDeck[(i+1)]);
+	while (tempDeck.length) {
 
+    const rndIdx = Math.floor(Math.random() * tempDeck.length/2)
+
+    playerHand.push(tempDeck.splice(rndIdx,0));
 	}
+  while (tempDeck.length) {
+
+    const rndIdx = Math.floor(Math.random() * tempDeck.length/2)
+    
+    compHand.push(tempDeck.splice((rndIdx),0));
+  }
 
 	$('.playCount').html("Player cards: " + playerHand.length);
 	$('.compCount').html("Computer cards: " + compHand.length);
@@ -175,12 +183,12 @@ function compareWar(player, comp) {
 function checkWin() {
 	
 	if (playerHand.length == 0) {
-		$(".result").html("The computer wins the game :(")
+		$(".result").html("I'm sorry but you lost. The computer wins the game.")
 		$('.deal').hide();
 	}
 	else if (compHand.length == 0) {
 		
-		$(".result").html("You won the game! :)")
+		$(".result").html("Congrats you win!!")
 		$('.deal').hide();
 	}
 }
@@ -219,31 +227,29 @@ function hideAll() {
 function getNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
   const tempDeck = [...originalDeck];
-  const newShuffledDeck = [];
-  while (tempDeck.length != 52 ) {
+  while (tempDeck.length) {
     // Get a random index for a card still in the tempDeck
-    const rndIdx = Math.floor(Math.random() * tempDeck.length);
+    const rndIdx = Math.floor(Math.random() * tempDeck.length/2);
     
-    newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
+    shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
   }
-  return newShuffledDeck;
 }
+// function renderDeckInContainer(shuffledDeck, shuffledContainer) {
+//   shuffledContainer.innerHTML = '';
 
-function renderNewShuffledDeck() {
+//   const cardsHtml = shuffledDeck.reduce(function(html, card) {
+//     return html + `<div class="card ${card.face}"></div>`;
+//   }, '');
+
+//   shuffledContainer.innerHTML = cardsHtml;
+// }
+
+//function renderNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
-  shuffledDeck = getNewShuffledDeck();
-  renderDeckInContainer(shuffledDeck, shuffledContainer);
-}
+ // shuffledDeck = getNewShuffledDeck();
+  //renderDeckInContainer(shuffledDeck, shuffledContainer);
+//}
 
-function renderDeckInContainer(shuffledDeck, shuffledContainer) {
-  shuffledContainer.innerHTML = '';
-
-  const cardsHtml = deck.reduce(function(html, card) {
-    return html + `<div class="card ${card.face}"></div>`;
-  }, '');
-
-  shuffledContainer.innerHTML = cardsHtml;
-}
 // function renderJokerDeckInContainer(deck, container) {
 //   container.innerHTML = '';
 
@@ -298,15 +304,15 @@ function buildOriginalDeck() {
   
     playerCard = playerHand[0];
     compCard = compHand[0];
+   // let face= `${suit}${rank}`;
+    // var img = face: `${suit}${rank}`;
+    // var img2 = face: `${suit}${rank}`;
   
-    var img = `${suit}${rank}`;
-    var img2 = `${suit}${rank}`;
+    // img.src = (face: `${suit}${rank}`, + playerHand[0]);
+    // img2.src = (face: `${suit}${rank}`, + compHand[0]);
   
-    img.src = (`${suit}${rank}`, + playerHand[0]);
-    img2.src = (`${suit}${rank}`, + compHand[0]);
-  
-    $('.playerCard').append(cardsHtml);
-    $('.compCard').append(cardsHtml);
+    // $('.playerCard').append(face);
+    // $('.compCard').append(face);
   
     compare(playerCard, compCard);
   }

@@ -6,7 +6,7 @@
 body {
 	background-color: #a83113; 
 	color: #fff;
-	font-family: Lato, sans-serif; 
+	font-family: 'Courier New', Courier, monospace; 
 	letter-spacing: .1em;
 	margin: 0;
 	overflow-x: hidden;
@@ -15,8 +15,8 @@ body {
 }
 
 h1 {
-	font-size: 100px; 
-	font-family: Komtit; 
+	font-size: 80px; 
+	font-family: 'Courier New', Courier, monospace; 
 	font-weight: bolder;
 	margin: 0 0 20px 0;
 	padding: 0;
