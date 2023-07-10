@@ -48,21 +48,21 @@ let playerCard = '', compCard = '';
 
 
 function splitCards() {
-  const tempDeck = [...shuffledDeck]
+  const tempDeck = [shuffledDeck]
   buildOriginalDeck();
   getNewShuffledDeck();
   
-	while (tempDeck.length) {
+	while (shuffledDeck.length) {
 
-    const rndIdx = Math.floor(Math.random() * tempDeck.length/2)
+    const rndIdx = Math.floor(Math.random() * shuffledDeck.length/2)
 
-    playerHand.push(tempDeck.splice(rndIdx,0));
+    playerHand.push(shuffledDeck.splice(rndIdx,0));
 	}
-  while (tempDeck.length) {
+  while (shuffledDeck.length) {
 
-    const rndIdx = Math.floor(Math.random() * tempDeck.length/2)
+    const rndIdx = Math.floor(Math.random() * shuffledDeck.length/2)
     
-    compHand.push(tempDeck.splice((rndIdx),0));
+    compHand.push(shuffledDeck.splice((rndIdx),0));
   }
 
 	$('.playCount').html("Player cards: " + playerHand.length);
