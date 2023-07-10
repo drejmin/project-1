@@ -4,24 +4,39 @@
 }
 
 body {
-  height: 100vh;
-  font-family: sans-serif;
-  justify-content: center;
-  display: inline-table;
-  padding: auto;
+	background-color: #a83113; 
+	color: #fff;
+	font-family: Lato, sans-serif; 
+	letter-spacing: .1em;
+	margin: 0;
+	overflow-x: hidden;
+	text-align: center;
+  
 }
 
-h1{
-  display: center;
-  align-content: center;
-  justify-content: center;
-  padding:auto;
+h1 {
+	font-size: 100px; 
+	font-family: Komtit; 
+	font-weight: bolder;
+	margin: 0 0 20px 0;
+	padding: 0;
 }
-h2{
-  font-display: center;
-  align-content: center;
-  margin: auto;
-  padding: auto;
+
+h2 {
+	font-size: 40px;
+}
+
+h3 {
+	font-size: 30px; 
+	font-family: Komtit; 
+	margin: 0;
+	padding: 0; 
+}
+
+h4{
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
 }
 
 .card-container {
@@ -33,18 +48,34 @@ h2{
 }
 
 button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
-  color: black;
-  border: 1px solid black;
-  border-radius: 4px;
-  outline: none;
+	border: 0;
+	box-shadow: 3px 3px 3px #222;
+	color: #222; 
+	cursor: pointer;
+	font-family: Lato;
+	font-size: 25px; 
+	margin: 10px auto;
+	padding: 10px 0;
+	width: 170px; 
   background-color: #dc2525;
 }
 
 button:hover {
   background-color: grey;
   color: white;
+}
+
+
+img {
+	border-radius: 10px; 
+	box-shadow: 3px 3px 3px #222;
+	width: 20%;
+  background: #fff;
+}
+
+footer {
+	color: #e8e8e8;
+	margin-top: 50px;
+	padding: 10px 0;
+	width: 100%;
 }
