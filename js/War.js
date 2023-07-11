@@ -72,14 +72,14 @@ function splitCards() {
 
 
 
-function compare(player, comp) {
+function compare(playerCard, compCard) {
 	
-	if((player % 13) > (comp % 13)) {
+	if((playerCard % 13) > (compCard % 13)) {
 	
 		$('.result').html("Player wins!")
 		
-		playerHand.push(comp);
-		playerHand.push(player);
+		playerHand.push(compCard);
+		playerHand.push(playerCard);
 
 		playerHand.shift();
 		compHand.shift();
@@ -89,12 +89,12 @@ function compare(player, comp) {
 	}
 
 
-	else if ((player % 13) < (comp % 13)) {
+	else if ((playerCard % 13) < (compCard % 13)) {
 		
 		$('.result').html("Computer wins!")
 		
-		compHand.push(player);
-		compHand.push(comp);
+		compHand.push(playerCard);
+		compHand.push(compCard);
 
 		compHand.shift();
 		playerHand.shift();
@@ -103,8 +103,8 @@ function compare(player, comp) {
 		checkWin();
 	}
 
-	else if ((player % 13) === (comp % 13))
-		war();
+	else if ((playerCard % 13) === (compCard % 13))
+		warToArray();
 }
 
 
@@ -136,9 +136,9 @@ function warToArray() {
 }
 
 
-function compareWar(player, comp) {
+function compareWar(playerCard, compCard) {
 	
-	if((player % 13) > (comp % 13)) {
+	if((playerCard % 13) > (compCard % 13)) {
 	
 		$('.result').html("Player wins!");
 		
@@ -157,14 +157,14 @@ function compareWar(player, comp) {
 	}
 
 	
-	else if ((player % 13) < (comp % 13)) {
+	else if ((playerCard % 13) < (compCard % 13)) {
 		
 		$('.result').html("Computer wins!");
 		
 		compHand.push.apply(compHand, warArray);
 		
-		compHand.push(player);
-		compHand.push(comp);
+		compHand.push(playerCard);
+		compHand.push(compCard);
 
 		playerHand.shift();
 		compHand.shift();
@@ -176,8 +176,8 @@ function compareWar(player, comp) {
 	}
 
 
-	else if ((player % 13) === (comp % 13))
-		war();
+	else if ((playerCard % 13) === (compCard % 13))
+		warToArray();
 }
 
 function checkWin() {
@@ -228,21 +228,21 @@ function getNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
   const tempDeck = [...originalDeck];
   while (tempDeck.length) {
+    
     // Get a random index for a card still in the tempDeck
     const rndIdx = Math.floor(Math.random() * tempDeck.length/2);
     
-    shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
+    shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0])
+    ;
   }
 }
-// function renderDeckInContainer(shuffledDeck, shuffledContainer) {
-//   shuffledContainer.innerHTML = '';
-
-//   const cardsHtml = shuffledDeck.reduce(function(html, card) {
-//     return html + `<div class="card ${card.face}"></div>`;
-//   }, '');
-
-//   shuffledContainer.innerHTML = cardsHtml;
-// }
+function renderDeckInContainer(deck, container) {
+  container.innerHTML = '';
+  // Let's build the cards as a string of HTML
+  let cardsHtml = '';
+  deck.forEach(function(card) {
+    cardsHtml += `<div class="card ${card.face}"></div>`;
+  });}
 
 //function renderNewShuffledDeck() {
   // Create a copy of the originalDeck (leave originalDeck untouched!)
@@ -296,27 +296,21 @@ function buildOriginalDeck() {
 
 
   function deal() {
-
-  
+    
+    compare(playerCard, compCard);
     $('.playerCard').html("");
     $('.compCard').html("");
     $('.newGame').show();
   
     playerCard = playerHand[0];
     compCard = compHand[0];
-    let face= `${suit}${rank}`;
-    // var img = face: `${suit}${rank}`;
-    // var img2 = face: `${suit}${rank}`;
+    
   
-    // img.src = (face: `${suit}${rank}`, + playerHand[0]);
-    // img2.src = (face: `${suit}${rank}`, + compHand[0]);
+    // let cardsHtml = '';
+    // shuffledDeck.forEach(function(card) {
+    // cardsHtml += `<div class="card ${card.face}"></div>`;
+
+    $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
+    $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);}
   
-    $('.playerCard').append(face);
-    $('.compCard').append(face);
   
-    compare(playerCard, compCard);
-  }
-  function play(){
-    playerCard = playerHand[0];
-    compCard
-  }
