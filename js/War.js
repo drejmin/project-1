@@ -29,28 +29,13 @@ function hideAll() {
 	$(".newGame").hide();
 
 
-}function renderBoard() {
+}
+
+function renderBoard() {
 	hideAll();
 	$("#gameboard").show();
 	playing = true;
   splitCards();
-}
-
-
-function splitCards() {
-  
-  buildOriginalDeck();
-  getNewShuffledDeck();
-  let i=0
-	for (i=0; i!=26; i++) {
-    
-    playerHand.push(shuffledDeck.splice(26,1));
-	}
-  for (i=0; i!=26; i++) {
-    
-    compHand.push(shuffledDeck.splice(0,1));
-  }
-  
 }
 
 function buildOriginalDeck() {
@@ -83,6 +68,21 @@ function getNewShuffledDeck() {
   }
 }
 
+function splitCards() {
+  
+  buildOriginalDeck();
+  getNewShuffledDeck();
+  let i=0
+  for (i=0; i!=26; i++) {
+    
+    playerHand.push(shuffledDeck.splice(26,1));
+  }
+  for (i=0; i!=26; i++) {
+    
+    compHand.push(shuffledDeck.splice(0,1));
+  }
+  
+}
 
 function compare(playerCard, compCard) {
   
@@ -119,7 +119,6 @@ function compare(playerCard, compCard) {
   warToArray();
 }
 
-
 function warToArray() {
   
   var length = 0;
@@ -146,7 +145,6 @@ function warToArray() {
   
 	compareWar(playerHand[0], compHand[0]);
 }
-
 
 function compareWar(playerCard, compCard) {
   
