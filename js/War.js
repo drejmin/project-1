@@ -9,15 +9,12 @@ const originalDeck = buildOriginalDeck();
 let shuffledDeck = [];
 let playing = false;
 let newShuffledDeck = [];
-let warArray = []
+let warArray = [];
 let playerHand = [];
 let compHand = [];
- 
+let playerCard = [];
+let compCard = [];
 
-let playerCard = '', compCard = '';
-
-/*----- cached element references -----*/
-/*----- event listeners -----*/
 /*----- functions -----*/
 
 window.onload = function() {$("#gameboard").hide()};
@@ -54,9 +51,6 @@ function splitCards() {
     compHand.push(shuffledDeck.splice(0,1));
   }
   
-	// $('.playCount').html("Player cards: " + playerHand.length);
-	// $('.compCount').html("Computer cards: " + compHand.length);
-	// $('.result').html("");
 }
 
 function buildOriginalDeck() {
@@ -111,7 +105,7 @@ function deal() {
 
 function compare(playerCard, compCard) {
   
-  if((playerCard[0] % 13) > (compCard[0] % 13)) {
+  if((playerCard[0]) > (compCard[0])) {
 	
 		$('.result').html("Player wins!")
 		
@@ -126,7 +120,7 @@ function compare(playerCard, compCard) {
 	}
 
 
-	else if ((playerCard[0] % 13) < (compCard[0] % 13)) {
+	else if ((playerCard[0]) < (compCard[0])) {
 		
 		$('.result').html("Computer wins!")
 		
@@ -140,7 +134,7 @@ function compare(playerCard, compCard) {
 		checkWin();
 	}
 
-	else if ((playerCard[0] % 13) === (compCard[0] % 13))
+	else if ((playerCard[0]) === (compCard[0]))
 		warToArray();
 }
 
@@ -175,7 +169,7 @@ function warToArray() {
 
 function compareWar(playerCard, compCard) {
 	
-	if((playerCard[0] % 13) > (compCard[0] % 13)) {
+	if((playerCard[0]) > (compCard[0])) {
 	
 		$('.result').html("Player wins!");
 		
@@ -194,7 +188,7 @@ function compareWar(playerCard, compCard) {
 	}
 
 	
-	else if ((playerCard[0] % 13) < (compCard[0] % 13)) {
+	else if ((playerCard[0]) < (compCard[0])) {
 		
 		$('.result').html("Computer wins!");
 		
@@ -213,7 +207,7 @@ function compareWar(playerCard, compCard) {
 	}
 
 
-	else if ((playerCard % 13) === (compCard % 13))
+	else if ((playerCard ) === (compCard ))
 		warToArray();
 }
 
