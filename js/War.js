@@ -89,19 +89,19 @@ function deal() {
 	$('.compCount').html("Computer cards: " + compHand.length);
 	$('.result').html("");
     
+  
+  playerCard = playerHand[0];
+  compCard = compHand[0];
+  
+  
+  $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
+  $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
+  
   compare(playerCard, compCard);
   $('.playerCard').html("");
   $('.compCard').html("");
   $('.newGame').show();
-
-  playerCard = playerHand[0];
-  compCard = compHand[0];
-  
-
-  $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
-  $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);}
-
-
+}
 
 function compare(playerCard, compCard) {
   
