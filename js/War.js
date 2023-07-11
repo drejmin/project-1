@@ -48,21 +48,21 @@ let playerCard = '', compCard = '';
 
 
 function splitCards() {
-  const tempDeck = [shuffledDeck]
+
   buildOriginalDeck();
   getNewShuffledDeck();
-  
-	while (shuffledDeck.length) {
+  let i=0
+	for (i=0; i!=26; i++) {
 
     const rndIdx = Math.floor(Math.random() * shuffledDeck.length/2)
 
-    playerHand.push(shuffledDeck.splice(rndIdx,0));
+    playerHand.push(shuffledDeck.splice(26,1));
 	}
-  while (shuffledDeck.length) {
+  for (i=0; i!=26; i++) {
 
     const rndIdx = Math.floor(Math.random() * shuffledDeck.length/2)
     
-    compHand.push(shuffledDeck.splice((rndIdx),0));
+    compHand.push(shuffledDeck.splice(0,1));
   }
 
 	$('.playCount').html("Player cards: " + playerHand.length);
@@ -296,7 +296,7 @@ function buildOriginalDeck() {
 
 
   function deal() {
-	splitCards();
+
   
     $('.playerCard').html("");
     $('.compCard').html("");
@@ -304,15 +304,19 @@ function buildOriginalDeck() {
   
     playerCard = playerHand[0];
     compCard = compHand[0];
-   // let face= `${suit}${rank}`;
+    let face= `${suit}${rank}`;
     // var img = face: `${suit}${rank}`;
     // var img2 = face: `${suit}${rank}`;
   
     // img.src = (face: `${suit}${rank}`, + playerHand[0]);
     // img2.src = (face: `${suit}${rank}`, + compHand[0]);
   
-    // $('.playerCard').append(face);
-    // $('.compCard').append(face);
+    $('.playerCard').append(face);
+    $('.compCard').append(face);
   
     compare(playerCard, compCard);
+  }
+  function play(){
+    playerCard = playerHand[0];
+    compCard
   }
