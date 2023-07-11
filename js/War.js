@@ -111,12 +111,12 @@ function deal() {
 
 function compare(playerCard, compCard) {
   
-  if((playerCard % 13) > (compCard % 13)) {
+  if((playerCard[0] % 13) > (compCard[0] % 13)) {
 	
 		$('.result').html("Player wins!")
 		
-		playerHand.push(compCard);
-		playerHand.push(playerCard);
+		playerHand.push(compCard[0]);
+		playerHand.push(playerCard[0]);
 
 		playerHand.shift();
 		compHand.shift();
@@ -126,12 +126,12 @@ function compare(playerCard, compCard) {
 	}
 
 
-	else if ((playerCard % 13) < (compCard % 13)) {
+	else if ((playerCard[0] % 13) < (compCard[0] % 13)) {
 		
 		$('.result').html("Computer wins!")
 		
-		compHand.push(playerCard);
-		compHand.push(compCard);
+		compHand.push(playerCard)[0];
+		compHand.push(compCard[0]);
 
 		compHand.shift();
 		playerHand.shift();
@@ -140,7 +140,7 @@ function compare(playerCard, compCard) {
 		checkWin();
 	}
 
-	else if ((playerCard % 13) === (compCard % 13))
+	else if ((playerCard[0] % 13) === (compCard[0] % 13))
 		warToArray();
 }
 
@@ -175,14 +175,14 @@ function warToArray() {
 
 function compareWar(playerCard, compCard) {
 	
-	if((playerCard % 13) > (compCard % 13)) {
+	if((playerCard[0] % 13) > (compCard[0] % 13)) {
 	
 		$('.result').html("Player wins!");
 		
 		playerHand.push.apply(playerHand, warArray);
 
-		playerHand.push(compCard);
-		playerHand.push(playerCard);
+		playerHand.push(compCard[0]);
+		playerHand.push(playerCard[0]);
 		
 		playerHand.shift();
 		compHand.shift();
@@ -194,14 +194,14 @@ function compareWar(playerCard, compCard) {
 	}
 
 	
-	else if ((playerCard % 13) < (compCard % 13)) {
+	else if ((playerCard[0] % 13) < (compCard[0] % 13)) {
 		
 		$('.result').html("Computer wins!");
 		
 		compHand.push.apply(compHand, warArray);
 		
-		compHand.push(playerCard);
-		compHand.push(compCard);
+		compHand.push(playerCard[0]);
+		compHand.push(compCard[0]);
 
 		playerHand.shift();
 		compHand.shift();
