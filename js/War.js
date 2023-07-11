@@ -83,12 +83,138 @@ function getNewShuffledDeck() {
   }
 }
 
+
+function compare(playerCard, compCard) {
+  
+  if((playerCard[0]) > (compCard[0])) {
+    
+    $('.result').html("Player wins!")
+		
+		playerHand.push(compCard[0]);
+		playerHand.push(playerCard[0]);
+    
+		playerHand.shift();
+		compHand.shift();
+    
+		updateCount();
+		checkWin();
+	}
+  
+  
+	else if ((playerCard[0]) < (compCard[0])) {
+    
+    $('.result').html("Computer wins!")
+		
+		compHand.push(playerCard)[0];
+		compHand.push(compCard[0]);
+    
+		compHand.shift();
+		playerHand.shift();
+    
+		updateCount();
+		checkWin();
+	}
+  
+	else if ((playerCard[0]) === (compCard[0]))
+  warToArray();
+}
+
+
+function warToArray() {
+  
+  var length = 0;
+  
+	if (playerHand.length < 5 || compHand.length < 5) {
+    
+    if(playerHand.length > compHand.length) {
+      length = compHand.length - 1;
+		}
+    
+		else if (playerHand.length < compHand.length) {
+      length = playerHand.length - 1;
+		}
+	}
+	else {
+    length = 3;		
+	}
+	for (let i = 0; i < length; i++) {
+    warArray.push(playerHand[0]);
+		playerHand.shift();
+		warArray.push(compHand[0]);
+		compHand.shift();
+	}
+  
+	compareWar(playerHand[0], compHand[0]);
+}
+
+
+function compareWar(playerCard, compCard) {
+  
+  if((playerCard[0]) > (compCard[0])) {
+    
+    $('.result').html("Player wins!");
+		
+		playerHand.push.apply(playerHand, warArray);
+    
+		playerHand.push(compCard[0]);
+		playerHand.push(playerCard[0]);
+		
+		playerHand.shift();
+		compHand.shift();
+		
+		warArray.length = 0;
+    
+		updateCount();
+		checkWin();
+	}
+  
+	
+	else if ((playerCard[0]) < (compCard[0])) {
+    
+    $('.result').html("Computer wins!");
+		
+		compHand.push.apply(compHand, warArray);
+		
+		compHand.push(playerCard[0]);
+		compHand.push(compCard[0]);
+    
+		playerHand.shift();
+		compHand.shift();
+    
+		warArray.length = 0;
+    
+		updateCount();
+		checkWin();
+	}
+  
+  
+	else if ((playerCard ) === (compCard ))
+  warToArray();
+}
+
+function checkWin() {
+  
+  if (playerHand.length == 0) {
+    $(".result").html("I'm sorry but you lost. The computer wins the game.")
+		$('.deal').hide();
+	}
+	else if (compHand.length == 0) {
+    
+    $(".result").html("Congrats you win!!")
+		$('.deal').hide();
+	}
+}
+
 function deal() {
 
-	$('.playCount').html("Player cards: " + playerHand.length);
-	$('.compCount').html("Computer cards: " + compHand.length);
-	$('.result').html("");
+  $('.playCount').html("Player cards: " + playerHand.length);
+  $('.compCount').html("Computer cards: " + compHand.length);
+  $('.result').html("");
     
+  compare(playerCard, compCard);
+  $('.playerCard').html("");
+  $('.compCard').html("");
+  $('.newGame').show();
   
   playerCard = playerHand[0];
   compCard = compHand[0];
@@ -97,133 +223,7 @@ function deal() {
   $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
   $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
   
-  compare(playerCard, compCard);
-  $('.playerCard').html("");
-  $('.compCard').html("");
-  $('.newGame').show();
 }
-
-function compare(playerCard, compCard) {
-  
-  if((playerCard[0]) > (compCard[0])) {
-	
-		$('.result').html("Player wins!")
-		
-		playerHand.push(compCard[0]);
-		playerHand.push(playerCard[0]);
-
-		playerHand.shift();
-		compHand.shift();
-
-		updateCount();
-		checkWin();
-	}
-
-
-	else if ((playerCard[0]) < (compCard[0])) {
-		
-		$('.result').html("Computer wins!")
-		
-		compHand.push(playerCard)[0];
-		compHand.push(compCard[0]);
-
-		compHand.shift();
-		playerHand.shift();
-
-		updateCount();
-		checkWin();
-	}
-
-	else if ((playerCard[0]) === (compCard[0]))
-		warToArray();
-}
-
-
-function warToArray() {
-
-	var length = 0;
-
-	if (playerHand.length < 5 || compHand.length < 5) {
-
-		if(playerHand.length > compHand.length) {
-			length = compHand.length - 1;
-		}
-
-		else if (playerHand.length < compHand.length) {
-			length = playerHand.length - 1;
-		}
-	}
-	else {
-		length = 3;		
-	}
-	for (let i = 0; i < length; i++) {
-		warArray.push(playerHand[0]);
-		playerHand.shift();
-		warArray.push(compHand[0]);
-		compHand.shift();
-	}
-
-	compareWar(playerHand[0], compHand[0]);
-}
-
-
-function compareWar(playerCard, compCard) {
-	
-	if((playerCard[0]) > (compCard[0])) {
-	
-		$('.result').html("Player wins!");
-		
-		playerHand.push.apply(playerHand, warArray);
-
-		playerHand.push(compCard[0]);
-		playerHand.push(playerCard[0]);
-		
-		playerHand.shift();
-		compHand.shift();
-		
-		warArray.length = 0;
-
-		updateCount();
-		checkWin();
-	}
-
-	
-	else if ((playerCard[0]) < (compCard[0])) {
-		
-		$('.result').html("Computer wins!");
-		
-		compHand.push.apply(compHand, warArray);
-		
-		compHand.push(playerCard[0]);
-		compHand.push(compCard[0]);
-
-		playerHand.shift();
-		compHand.shift();
-
-		warArray.length = 0;
-
-		updateCount();
-		checkWin();
-	}
-
-
-	else if ((playerCard ) === (compCard ))
-		warToArray();
-}
-
-function checkWin() {
-	
-	if (playerHand.length == 0) {
-		$(".result").html("I'm sorry but you lost. The computer wins the game.")
-		$('.deal').hide();
-	}
-	else if (compHand.length == 0) {
-		
-		$(".result").html("Congrats you win!!")
-		$('.deal').hide();
-	}
-}
-
 
 
 
