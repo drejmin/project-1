@@ -215,11 +215,12 @@ function deal() {
   
   playerCard = playerHand[0];
   compCard = compHand[0];
+  $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
+  $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
+  
   compare(playerCard, compCard);
   
   
-  $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
-  $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
   
 }
 
