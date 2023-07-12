@@ -86,7 +86,7 @@ function splitCards() {
 
 function compare(playerCard, compCard) {
   
-  if((playerCard[0]) > (compCard[0])) {
+  if((playerCard[0].value) > (compCard[0].value)) {
     
     $('.result').html("Player wins!")
 		
@@ -101,7 +101,7 @@ function compare(playerCard, compCard) {
 	}
   
   
-	else if ((playerCard[0]) < (compCard[0])) {
+	else if ((playerCard[0].value) < (compCard[0].value)) {
     
     $('.result').html("Computer wins!")
 		
@@ -115,7 +115,7 @@ function compare(playerCard, compCard) {
 		checkWin();
 	}
   
-	else if ((playerCard[0]) === (compCard[0]))
+	else if ((playerCard[0].value) === (compCard[0].value))
   warToArray();
 }
 
@@ -148,7 +148,7 @@ function warToArray() {
 
 function compareWar(playerCard, compCard) {
   
-  if((playerCard[0]) > (compCard[0])) {
+  if((playerCard[0].value) > (compCard[0].value)) {
     
     $('.result').html("Player wins!");
 		
@@ -167,7 +167,7 @@ function compareWar(playerCard, compCard) {
 	}
   
 	
-	else if ((playerCard[0]) < (compCard[0])) {
+	else if ((playerCard[0].value) < (compCard[0].value)) {
     
     $('.result').html("Computer wins!");
 		
@@ -186,7 +186,7 @@ function compareWar(playerCard, compCard) {
 	}
   
   
-	else if ((playerCard ) === (compCard ))
+	else if ((playerCard[0].value) === (compCard[0].value))
   warToArray();
 }
 
@@ -209,13 +209,13 @@ function deal() {
   $('.compCount').html("Computer cards: " + compHand.length);
   $('.result').html("");
     
-  compare(playerCard, compCard);
   $('.playerCard').html("");
   $('.compCard').html("");
   $('.newGame').show();
   
   playerCard = playerHand[0];
   compCard = compHand[0];
+  compare(playerCard, compCard);
   
   
   $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
