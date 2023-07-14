@@ -27,6 +27,7 @@ function hideAll() {
 	$("#start").hide();
   $('#ruleSet').hide();
 	$(".newGame").hide();
+	$("#warBoard").hide();
 
 
 }
@@ -36,6 +37,17 @@ function renderBoard() {
 	$("#gameboard").show();
 	playing = true;
   splitCards();
+}
+function showFaces(){
+	
+	$('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
+	$('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
+	
+}
+
+function updateCount() {
+	$('.playCount').html("Player cards: " + playerHand.length);
+	$('.compCount').html("Computer cards: " + compHand.length);
 }
 
 function buildOriginalDeck() {
@@ -85,6 +97,8 @@ function splitCards() {
 }
 
 function compare(playerCard, compCard) {
+
+	showFaces();
   
   if((playerCard[0].value) > (compCard[0].value)) {
     
@@ -116,12 +130,16 @@ function compare(playerCard, compCard) {
 	}
   
 	else if ((playerCard[0].value) === (compCard[0].value))
+	
   warToArray();
 }
 
 function warToArray() {
   
-  var length = 0;
+//   $("#warBoard").show();
+//   $("#gambBoard").hide();
+
+  let length = 0;
   
 	if (playerHand.length < 5 || compHand.length < 5) {
     
@@ -137,13 +155,13 @@ function warToArray() {
     length = 3;		
 	}
 	for (let i = 0; i < length; i++) {
-    warArray.push(playerHand[0]);
+   		warArray.push(playerHand[0]);
 		playerHand.shift();
 		warArray.push(compHand[0]);
 		compHand.shift();
 	}
   
-	compareWar(playerHand[0], compHand[0]);
+	compareWar(playerCard, compCard);
 }
 
 function compareWar(playerCard, compCard) {
@@ -205,6 +223,7 @@ function checkWin() {
 
 function deal() {
 
+  $("#warBoard").hide();
   $('.playCount').html("Player cards: " + playerHand.length);
   $('.compCount').html("Computer cards: " + compHand.length);
   $('.result').html("");
@@ -215,11 +234,8 @@ function deal() {
   
   playerCard = playerHand[0];
   compCard = compHand[0];
-  $('.playerCard').append(`<img class="card ${playerCard[0].face}"></img>`);
-  $('.compCard').append(`<img class="card ${compCard[0].face}"></img>`);
-  
+
   compare(playerCard, compCard);
-  
   
   
 }
